@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 方法二：IE8 完全不支持,需要创建,默认类型都是行级元素 -->
+    <script src="https://cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>
+    <title>Document</title>
+    <style>
+        /* IE9行级元素在设置高度失效，需要设置block
+         */
+
+        main {
+            height: 100px;
+            background-color: rgb(153, 51, 114);
+            width: 100%;
+            display: block;
+        }
+
+    </style>
+    <script>
+        //方法一： IE8 完全不支持,需要创建,默认类型都是行级元素
+        document.createElement("main");
+    </script>
+</head>
+
+<body>
+    <main>
+        dd
+    </main>
+</body>
+
+</html>

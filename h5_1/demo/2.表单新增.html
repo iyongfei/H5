@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- *******************************新增的type *******************************-->
+
+    <form action="">
+        <!-- 提供了默认的邮箱格式验证@ -->
+        邮箱：
+        <input type="email">
+        <br>
+        <!-- tel并不是用来验证，而是在移动端弹出数字键盘，意味着只能输入数字 -->
+        <input type="tel">
+        <br>
+        <!-- 验证需要输入合法的网址 -->
+        <input type="url">
+        <br>
+        <!-- 只能输入数字 -->
+        <input type="number" value="10" max="15" min="2">
+        <br>
+        <!-- 后面自带删除X -->
+        <input type="search">
+        <br>
+        <!-- 范围滚轮-->
+        <input type="range" max="10" min="5" value="7">
+        <br>
+        <!-- 颜色选择 -->
+        <input type="color">
+        <br>
+
+        <!-- 时间日期 -->
+        <input type="time">
+        <br>
+        <!-- 日期 -->
+        <input type="date">
+        <br>
+        <!-- 现在大部分浏览器不支持，只有苹果支持 弃用 -->
+        <input type="datetime">
+        <br>
+        <!-- 使用datetime-local -->
+        <input type="datetime-local">
+        <br>
+        <!-- 月份 -->
+        <input type="month">
+        <br>
+        <!-- 星期 -->
+        <input type="week">
+        <br>
+
+        <input type="submit">
+    </form>
+
+    <br>
+    <br>
+    <!-- *******************************新增的其他属性 *******************************-->
+
+    <form action="" id="myForm">
+        <!-- placeholder占位符，autofocus 自动获取焦点
+            autocomplete 自动提示 on:打开 off:关闭
+            1、必须成功提交过
+            2、当前添加autocomplete的元素必须有name属性
+            -->
+        userName:
+        <input type="text" name="uname" placeholder="请输入名字" autofocus autocomplete="on">
+        <br>
+        <!-- tel并不是用来验证，而是在移动端弹出数字键盘，意味着只能输入数字
+        required 必须输入
+        正则表达式验证
+        -->
+        phone:
+        <input name="phone" type="tel" required pattern="^(\+86)?1\d{10}$">
+        <br>
+        <!-- 可以选择多个文件 -->
+        file:
+        <input type="file" name="photo" multiple>
+        <br>
+
+        <input type="submit">
+    </form>
+    <!-- 下面的元素没有在form中，默认不会提交，但是 -->
+    <input type="text" name="address" form="myForm">
+
+
+
+    <br>
+    <br>
+    <!-- *******************************新增的元素，在firefo上有问题，少用 *******************************-->
+    专业：
+    <input type="text" list="subject">
+
+    <datalist id="subject">
+        <option value="java" label="好"></option>
+        <option value="go" label="好好"></option>
+        <option value="python" label="好好好"></option>
+
+    </datalist>
+
+    <!-- 如果type="url" 那么value值必须是合法的url -->
+
+    <input type="url" list="urls">
+
+    <datalist id="urls">
+        <option value="www.baidu.com" label="好"></option>
+        <option value="www.sohu.com" label="好好好"></option>
+
+    </datalist>
+
+    <br><br>
+    <!-- *******************************新增的表单事件【有bug】******************************* -->
+    <form action="">
+        user:<input type="text" id="user" name="user"><br>
+        phone: <input type="tel" id="phoner" name="phone"  required pattern="^1\d{10}$">
+        email: <input type="email" id="emailer" name="email" required>
+        <input type="submit">
+
+    </form>
+    <script>
+        document.getElementById("user").oninput = function(){
+            console.info("oninput"+this.value);
+        }
+        document.getElementById("phoner").oninvalid = function(){
+            console.info("输入合法的phoner");
+            this.setCustomValidity("");
+            if (this.checkValidity() == false){
+                this.setCustomValidity("输入合法的phoner");
+            }
+           
+        }
+        document.getElementById("emailer").oninvalid = function(){
+            console.info("输入合法的emailer");
+            this.setCustomValidity("输入合法的emailer");
+        }
+         
+        
+        
+    </script>
+</body>
+
+</html>

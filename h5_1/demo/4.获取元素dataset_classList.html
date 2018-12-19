@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+
+    .red{
+        color: red;
+    }
+    .green{
+        color: green;
+    }
+    .blue{
+        color: blue;
+    }
+    .underline{
+        text-decoration: underline;
+    }
+</style>
+<body>
+    <ul>
+        <li class="java">java</li>
+        <li class="go">go</li>
+        <li class="python">python</li>
+    </ul>
+
+    <input type="button" id="add" value="add">
+    <input type="button" id="remove" value="remove">
+    <input type="button" id="toggle" value="toggle">
+    <input type="button" id="contain" value="contain">
+
+    <!-- data- 开头
+    data-后至少有一个字符
+    名称中应该都使用小写，不要包含任何大写，不要包含特殊字符 -->
+    <p data-name="safly" user="uuuu">haha</p>
+
+
+    
+    <script>
+        //取值
+        var p = document.querySelector("p");
+        var value = p.dataset["name"]
+        console.info(value,"value.....")
+        //传统方法
+        var atr = p.getAttribute("user")
+        console.info(atr)
+
+        // 获取元素
+        var java = document.querySelector(".java");
+        console.info("java", java)
+
+        var li = document.querySelectorAll("li")[0];
+        console.info(li)
+
+        // 添加、移除、切换、判断
+        window.onload = function () {
+            document.querySelector("#add").onclick = function () {
+                document.querySelector("li").classList.add("red");
+            }
+
+            document.querySelector("#remove").onclick = function () {
+                document.querySelector("li").classList.remove("red");
+            }
+
+            document.querySelector("#toggle").onclick = function () {
+                document.querySelector(".go").classList.toggle("red");
+            }
+
+            document.querySelector("#contain").onclick = function () {
+                var iscontain = document.querySelector(".python").classList.contains("red");
+                console.info("iscontain",iscontain)
+            }
+        }
+
+    </script>
+</body>
+
+</html>
